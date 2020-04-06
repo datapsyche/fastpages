@@ -6,8 +6,8 @@
 # https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
 # https://learnxinyminutes.com/docs/yaml/
 
-title:False Positive
-description: My attempt on tracking my improvement.
+title: False Positive
+description: Blog to track progress in data science.
 github_username: datapsyche
 # you can comment the below line out if your repo name is not different than your baseurl
 github_repo: "fastpages"

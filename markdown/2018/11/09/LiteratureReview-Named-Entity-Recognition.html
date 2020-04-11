@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>NER using Neural Networks | False Positive</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="NER using Neural Networks" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="NER using Neural Networks" />
+<meta property="og:description" content="NER using Neural Networks" />
+<link rel="canonical" href="https://datapsyche.github.io/fastpages/markdown/2018/11/09/LiteratureReview-Named-Entity-Recognition.html" />
+<meta property="og:url" content="https://datapsyche.github.io/fastpages/markdown/2018/11/09/LiteratureReview-Named-Entity-Recognition.html" />
+<meta property="og:site_name" content="False Positive" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-11-09T00:00:00-06:00" />
+<script type="application/ld+json">
+{"datePublished":"2018-11-09T00:00:00-06:00","headline":"NER using Neural Networks","description":"NER using Neural Networks","mainEntityOfPage":{"@type":"WebPage","@id":"https://datapsyche.github.io/fastpages/markdown/2018/11/09/LiteratureReview-Named-Entity-Recognition.html"},"@type":"BlogPosting","url":"https://datapsyche.github.io/fastpages/markdown/2018/11/09/LiteratureReview-Named-Entity-Recognition.html","dateModified":"2018-11-09T00:00:00-06:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/fastpages/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://datapsyche.github.io/fastpages/feed.xml" title="False Positive" /><link rel="shortcut icon" type="image/x-icon" href="/fastpages/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>NER using Neural Networks | False Positive</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="NER using Neural Networks" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="NER using Neural Networks" />
+<meta property="og:description" content="NER using Neural Networks" />
+<link rel="canonical" href="https://datapsyche.github.io/fastpages/markdown/2018/11/09/LiteratureReview-Named-Entity-Recognition.html" />
+<meta property="og:url" content="https://datapsyche.github.io/fastpages/markdown/2018/11/09/LiteratureReview-Named-Entity-Recognition.html" />
+<meta property="og:site_name" content="False Positive" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-11-09T00:00:00-06:00" />
+<script type="application/ld+json">
+{"datePublished":"2018-11-09T00:00:00-06:00","headline":"NER using Neural Networks","description":"NER using Neural Networks","mainEntityOfPage":{"@type":"WebPage","@id":"https://datapsyche.github.io/fastpages/markdown/2018/11/09/LiteratureReview-Named-Entity-Recognition.html"},"@type":"BlogPosting","url":"https://datapsyche.github.io/fastpages/markdown/2018/11/09/LiteratureReview-Named-Entity-Recognition.html","dateModified":"2018-11-09T00:00:00-06:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+<link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css"><link type="application/atom+xml" rel="alternate" href="https://datapsyche.github.io/fastpages/feed.xml" title="False Positive" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head><body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/fastpages/">False Positive</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/fastpages/about/">About Me</a><a class="page-link" href="/fastpages/search/">Search</a><a class="page-link" href="/fastpages/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">NER using Neural Networks</h1><p class="page-description">NER using Neural Networks</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2018-11-09T00:00:00-06:00" itemprop="datePublished">
+        Nov 9, 2018
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      5 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/fastpages/categories/#markdown">markdown</a>
+        
+      
+      </p>
+    
+
+    </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h1"><a href="#literature-review-of-named-entity-recognition-using-neural-networks">Literature Review of Named Entity Recognition using Neural Networks</a></li>
+</ul><h1 id="literature-review-of-named-entity-recognition-using-neural-networks">
+<a class="anchor" href="#literature-review-of-named-entity-recognition-using-neural-networks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Literature Review of Named Entity Recognition using Neural Networks</h1>
+
+<p>This is a short literature review of the detailed study conducted by Fabian Karl on the topic of Named Entity Recognition, the complete paper is available in this link :  <a href="https://www.inf.uni-hamburg.de/en/inst/ab/lt/teaching/independent-studies/201711-karl-ner-independent.pdf">Independent Study by Fabian Karl (University of Hamburger)</a>.</p>
+
+<p><strong>Named Entity Recognition</strong> - in simple words it is the task of finding or recognising named entities from a text / corpus. Named Entity could be anything from a person, organisation, Location or anything of that sort which are of interest to the user. The goal of the study is to replicate the state of the art  performance in NER without any handcrafted rules but only using pre labelled training data.</p>
+
+<p><strong>Dataset Used</strong> - two labelled data collection were used for training and testing</p>
+
+<ul>
+  <li>CoNLL-2003 - English and German</li>
+  <li>GermEval-2014 Dataset</li>
+</ul>
+
+<p><strong>Neural Network</strong></p>
+
+<ul>
+  <li>Recurrent Neural Network - RNN’s get a sequence of features as input where each feature could stand for one time step of some process, However RNN has a serious flaw of Exploding / vanishing gradient. because of which we have considered LSTM cells which are modified RNN. Major characteristic of LSTM cell is the various kind of forget gates. LSTM are widely used in Named Entity recognition.</li>
+  <li>Convolutional Neural Network - CNN connects only a certain number of  nodes to one of its preceding nodes where in a regular feed forward neural network connects to a certain number of nodes to one of its preceding nodes.  CNN’s are state of art network for image recognition tasks.</li>
+  <li>Conditional Random Fields - An additional conditional random field CRF instead of last softmax layer of one of the previously  described  neural networks allows to take the context of the output tags into account. Hence it can make predictions about the out coming tags on the basis of the whole output sequence.</li>
+</ul>
+
+<p><strong>Methods</strong></p>
+
+<p>Creating a numeric representation of textual input is essential in NLP for embedding it into a vector representation.</p>
+
+<ul>
+  <li>
+    <p><strong>One-Hot</strong> encoding is the best and easiest way to encode everything that is present. However this method has its own drawbacks, results in n vectors of size n (number of words) and has no meaningful representation</p>
+  </li>
+  <li>
+    <p>Embed each word based its context First they are one Hot encoded and trained on on their context of words  with one hidden layer. This allows for a meaningful comparison between vectors. this method allows to embed vectors into smaller vectors eg- 300 size vectors.</p>
+  </li>
+  <li>
+    <p><strong>Fasttext Model</strong> -  it is a pretrained model that uses continuous word representations instead of discrete representations of every word. Here a a vector representation is associated to each charater n grams with words being the sum of these representation.</p>
+  </li>
+  <li>
+    <p><strong>Word2vec</strong> and <strong>BPEmb</strong> - They performed worse than Fasttext model</p>
+  </li>
+</ul>
+
+<p><strong>Bi Directional Context</strong></p>
+
+<p>In order to take context information into account when predicting  the tag of a word, the words before and after the word in question were also embedded and used as an additional  information. The sentence was split into two lists where the first list contained all the embedding of word from the beginning of the sentence until the word in question inclusive, second list contains all the embeddings from the last word to the word in question.</p>
+
+<p><strong>Model Architecture</strong></p>
+
+<p>A modified Bi LSTM neural-net was used. After embedding  2 LSTM networks with 300 cells were added to the model, they were concatenated and result was fed to into 3 connected dense layer with 300 , 100 and 9 units respectively with a dropout of 0.6. If the CRF layer was not used, the Softmax activation function was applied for the last layer. ReLU activation was used for all the other layers. If CRF function was used in the last layer then ReLU was used instead of softmax. The last layer was then reshaped into a sequence length of 1 and given into CRF layer which returned a one hot encoding over the nine  output categories. The architecture resulted in having around 1.7 million trainable parameters. Batch Size was set to 512  for all the experiments  without CRF and 300 for all others.</p>
+
+<p><strong>Character Embedding</strong></p>
+
+<p>The word is converted into characters and the ASCII representation is saved into a List. This List is reversed and used as separate input into the dense layer and then concatenated  with the first drop-out layer after concatenation of the two LSTM layers.</p>
+
+<p><strong>CNN instead of LSTM</strong></p>
+
+<p>This was the second architecture they had experimented with. Two LSTM layers were replaced by number of convolutional layers spanning over different number of words. Each convolutional layer consists of fixed number of convolutional filters, each spanning over a matrix of 300*n . The idea is to use multiple smaller filters in order to  capture spacial and local information.</p>
+
+<p><strong>Other Related Works</strong></p>
+
+<p>Here the aim of the study was to replicate the state of the art behaviour for the NER task. Hence elements of the neural network architecture of other proven studies were taken into consideration. Use of Bi LSTM with CRF layer and character embedding had a performance score of 90.94 on english and 78.76 on german which were significant improvement at those current standards.</p>
+
+<p><strong>Discussion</strong></p>
+
+<ul>
+  <li>
+    <p><strong>Character Embedding</strong> - the results showed that when using a char representation of the word in question next to the bidirectional embedding of the whole sequence with a pretrained fasttext word embedding model gives the best performance. The fasttext embedding has a slight disadvantage that it converts all the Upper case letters to lowercase before reading it.</p>
+  </li>
+  <li>
+    <p><strong>Conditional Random Field</strong> - CRF conditions showed inferior performance than softmax layer. a good explanation couldnot be found for this. Hyper parameter tuning was not systemic that could be a valid reason why it didn’t perform well.</p>
+  </li>
+</ul>
+
+<p><strong>Conclusion</strong></p>
+
+<p>This proves the capabilities of neural architectures to learn tagging task (and categorisation tasks) with no external knowledge needed. It also shows that the importance and performance  of neural network architectures for  natural language tasks will further increase in the future</p>
+
+
+  </div><a class="u-url" href="/fastpages/markdown/2018/11/09/LiteratureReview-Named-Entity-Recognition.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/fastpages/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/fastpages/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/fastpages/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Blog to track progress in data science.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/fastai" title="fastai"><svg class="svg-icon grey"><use xlink:href="/fastpages/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/fastdotai" title="fastdotai"><svg class="svg-icon grey"><use xlink:href="/fastpages/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

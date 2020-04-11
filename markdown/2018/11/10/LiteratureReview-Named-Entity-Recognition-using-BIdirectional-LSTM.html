@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>NER with Bidirectional LSTM and CNN | False Positive</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="NER with Bidirectional LSTM and CNN" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="NER with Bidirectional LSTM and CNN" />
+<meta property="og:description" content="NER with Bidirectional LSTM and CNN" />
+<link rel="canonical" href="https://datapsyche.github.io/fastpages/markdown/2018/11/10/LiteratureReview-Named-Entity-Recognition-using-BIdirectional-LSTM.html" />
+<meta property="og:url" content="https://datapsyche.github.io/fastpages/markdown/2018/11/10/LiteratureReview-Named-Entity-Recognition-using-BIdirectional-LSTM.html" />
+<meta property="og:site_name" content="False Positive" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-11-10T00:00:00-06:00" />
+<script type="application/ld+json">
+{"datePublished":"2018-11-10T00:00:00-06:00","headline":"NER with Bidirectional LSTM and CNN","description":"NER with Bidirectional LSTM and CNN","mainEntityOfPage":{"@type":"WebPage","@id":"https://datapsyche.github.io/fastpages/markdown/2018/11/10/LiteratureReview-Named-Entity-Recognition-using-BIdirectional-LSTM.html"},"@type":"BlogPosting","url":"https://datapsyche.github.io/fastpages/markdown/2018/11/10/LiteratureReview-Named-Entity-Recognition-using-BIdirectional-LSTM.html","dateModified":"2018-11-10T00:00:00-06:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/fastpages/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://datapsyche.github.io/fastpages/feed.xml" title="False Positive" /><link rel="shortcut icon" type="image/x-icon" href="/fastpages/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>NER with Bidirectional LSTM and CNN | False Positive</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="NER with Bidirectional LSTM and CNN" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="NER with Bidirectional LSTM and CNN" />
+<meta property="og:description" content="NER with Bidirectional LSTM and CNN" />
+<link rel="canonical" href="https://datapsyche.github.io/fastpages/markdown/2018/11/10/LiteratureReview-Named-Entity-Recognition-using-BIdirectional-LSTM.html" />
+<meta property="og:url" content="https://datapsyche.github.io/fastpages/markdown/2018/11/10/LiteratureReview-Named-Entity-Recognition-using-BIdirectional-LSTM.html" />
+<meta property="og:site_name" content="False Positive" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-11-10T00:00:00-06:00" />
+<script type="application/ld+json">
+{"datePublished":"2018-11-10T00:00:00-06:00","headline":"NER with Bidirectional LSTM and CNN","description":"NER with Bidirectional LSTM and CNN","mainEntityOfPage":{"@type":"WebPage","@id":"https://datapsyche.github.io/fastpages/markdown/2018/11/10/LiteratureReview-Named-Entity-Recognition-using-BIdirectional-LSTM.html"},"@type":"BlogPosting","url":"https://datapsyche.github.io/fastpages/markdown/2018/11/10/LiteratureReview-Named-Entity-Recognition-using-BIdirectional-LSTM.html","dateModified":"2018-11-10T00:00:00-06:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+<link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css"><link type="application/atom+xml" rel="alternate" href="https://datapsyche.github.io/fastpages/feed.xml" title="False Positive" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head><body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/fastpages/">False Positive</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/fastpages/about/">About Me</a><a class="page-link" href="/fastpages/search/">Search</a><a class="page-link" href="/fastpages/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">NER with Bidirectional LSTM and CNN</h1><p class="page-description">NER with Bidirectional LSTM and CNN</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2018-11-10T00:00:00-06:00" itemprop="datePublished">
+        Nov 10, 2018
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      9 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/fastpages/categories/#markdown">markdown</a>
+        
+      
+      </p>
+    
+
+    </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h1"><a href="#named-entity-recognition-with-bidirectional-lstm-cnns-by-jason-pc-chiu-and-eric-nichols">Named Entity Recognition with Bidirectional LSTM-CNNs by Jason P.C. Chiu and Eric Nichols.</a></li>
+</ul><h1 id="named-entity-recognition-with-bidirectional-lstm-cnns-by-jason-pc-chiu-and-eric-nichols">
+<a class="anchor" href="#named-entity-recognition-with-bidirectional-lstm-cnns-by-jason-pc-chiu-and-eric-nichols" aria-hidden="true"><span class="octicon octicon-link"></span></a>Named Entity Recognition with Bidirectional LSTM-CNNs by Jason P.C. Chiu and Eric Nichols.</h1>
+
+<p>Reference for the Paper -  <a href="https://arxiv.org/abs/1511.08308">Named Entity Recognition with Bidirectional LSTM - CNN by Jason P.C.Chiu and Eric Nichols</a>.</p>
+
+<p>Github Reference -</p>
+
+<p><strong>Introduction</strong> - Named entity recognition (NER) is an important part in NLP and has been dominated by applying CRF, SVM or Perceptron models to hand crafted features.</p>
+
+<ul>
+  <li>Collobert et al. (2011b) - proposed idea of word embedding trained on large quantity of unlabelled text data with an effective neural network and a little feature engineering. However this doesn’t work well with rare words or words that are poorly embedded, hence a new powerful neural network model is needed.
+    <ul>
+      <li>RNN’s  (1996  - Goller and Kuchler) are popular since 2013 for machine translation and language modelling.</li>
+      <li>LSTM unit with forget gate improves long term dependencies to be easily learned (Gers et al - 2000).</li>
+      <li>For Labelling task like NER  and speech recognition a bi directional LSTM  model can take into account infinte amount of context that applies  to any feed -forward model.</li>
+      <li>CNN was investigated for modelling character level information among other NLP tasks.</li>
+    </ul>
+  </li>
+  <li>hence, a hybrid model involving CNN and bi directional LSTM that learns both character level and word level features presenting the first evaluation of such an architecture on well established english language evaluation datasets.</li>
+  <li>Lexicons are considered important for NER performance, hence a new lexicon encoding scheme and matching algorithm that can make use of partial matches and compare it to simpler approach of Collobert.</li>
+</ul>
+
+<p><strong>Model</strong></p>
+
+<ul>
+  <li>
+    <p>In Collobert’s model, lookup tables transforms discrete features such as words or characters into continous vector representation, which are then concatenated and fed into a neural network. Here instead of feed forward network, a Bidirectional LSTM network is used. To induce character level features a convolutional neural network is used.</p>
+  </li>
+  <li>
+    <p><strong>Sequence Labelling with LSTM</strong> - A stacked bi-directional  recurrent neural network with long short term memory units are used to transform word features into named entity tag scores. The extracted features of the word are fed into a forward LSTM network and a backward LSTM network. The output of each network at each time step is then decoded by a linear layer and a log softmax layer  into log probabilities for each tag category. These two vectors are simply added to get the final output. This architecture was found to be the best effective one after minor experiments.</p>
+  </li>
+  <li>
+    <p><strong>Extracting Character Features using CNN</strong>  - For each word a convolution and a max layer to extract a new feature vectors such as character embedding and character type. Words are padded with number of special padding characters on both sides depending on the window size of CNN</p>
+  </li>
+  <li>
+    <p><strong>Word Embedding</strong> - the best model used the publicly  available 50 dimensional word embedding released by Collobert which were trained on Wikipedia and Reuters Dataset that are publicly available. all words were lower cased before passing through the lookup table to convert the word embedding. the pretrained embedding was allowed to be modified during training.</p>
+  </li>
+  <li>
+    <p><strong>Character Embedding</strong> -  We randomly initialized a lookup table with values drawn from a uniform distribution with a range [-0.5 , 0.5] to output a character embedding of 25 dimensions. The character set includes all unique characters in CoNLL-dataset plus the special token paddings and unknown.</p>
+  </li>
+  <li>
+    <p><strong>Capitalization</strong> - Collobert’s method of using separate lookup table to add for a capitalization feature with options, All Caps, Upper Initial, lowercase, mixed case and no info.</p>
+  </li>
+  <li>
+    <p><strong>Lexicons</strong> - lexicons were categorised into 4 categories (‘Person’,’Organisation’,’Location’,’Misc’). For each lexicon category, it matched every n-gram against entries in the lexicon, A match is successful when the ngram matches the prefix or suffix of an entry and is atleast half the length of the entry. For all categories except Person, partial matches less than 2 token in length were discarded. when multiple overlaps are there maximum matched category is considered. matches are case insensitive. Each category is BIOES (begin, inside, outside, end, single) encoded. The best model used SENNA Lexicon (by Collobert et al) with exact matching and DBpedia lexicon with partial matching with BIOES annotation in both cases.</p>
+  </li>
+  <li>
+    <p><strong>Character Level features</strong> - A lookup table was used to output a 4 dimensional vector representing the type of the character.</p>
+  </li>
+</ul>
+
+<p><strong>Training and Inference</strong> 
+  Implemented using torch7 library (LUA). Training and inference were done on a per sentence level. Initial states of the LSTM are zero vectors. Except for the character and word embeddings whose initialisation were described previously. all lookup tables were also randomly initialised.</p>
+
+<p><strong>Objective function and Inference</strong></p>
+
+<p>[Requesting to go through the paper as i couldn’t comprehend and write here in the blog post]</p>
+
+<p><strong>Tagging Scheme</strong> - BIOES tagging scheme was used.</p>
+
+<p><strong>Learning Algorithm</strong> - Training done by minibatch SGD with a fixed learning rate. Each batch consists of multiple sentences with same number of tokens. Applied dropout to the output nodes of each LSTM layer to reduce overfitting. Other optimization algorithms like momentum, ada delta, RMSProp, were considered but SGD appears to perform well.</p>
+
+<p><strong>Evaluation</strong> - Evaluation was performed CoNLL-2003 NER shared dataset.</p>
+
+<p><strong>Dataset Preprocessing</strong></p>
+
+<ul>
+  <li>All digit sequence are replaced by single 0.</li>
+  <li>Before training, Sentences were grouped by word length into mini batches and shuffled.</li>
+</ul>
+
+<p><strong>Dataset</strong> -</p>
+
+<ul>
+  <li>CoNLL-2003 dataset consists of newswire from Reuters corpus tagged with four types of named entities : location, organization, person and miscellaneous. Dataset is small hence model has been trained on both training and development sets after performing hyper parameter optimization.</li>
+  <li>OntoNotes Dataset - Pradhan et al compiled a core portion of OntoNotes dataset for the CoNLL-2012 shared task and described a standard train/test/dev split which was used for evaluation. This dataset is much larger and has text from variety of sources.</li>
+</ul>
+
+<p><strong>Hyper parameter Optimisation</strong></p>
+
+<ul>
+  <li>
+    <p>Two rounds of hyper parameter optimisations were done and selected based on development set performance. Over 500 hyper parameter setting  were evaluated and then the same setting was taken along with learning rate to OntoNotes dataset.</p>
+  </li>
+  <li>
+    <p>for second Round - Independent hyper parameter searches on each dataset were carried out using Opportunity’s implementation of particle swarm (better than random search). Over 500 hyper parameters were again searched this round - training failed occasionaly and gave large variations from run to run. hence top 5 setting were taken and 10 trials were done and selected the best which gave the best average performance.</p>
+  </li>
+  <li>
+    <p>For CoNLL particle swarm produced best hyper parameters however for OntoNotes it didnot perform well.</p>
+  </li>
+  <li>
+    <p>CoNLL model was trained for large number of epochs as the no sign of overfitting was observed. Contrary training on Onto Notes began to overfit after 18 epochs.</p>
+  </li>
+</ul>
+
+<p><strong>Excluding Failed Trials</strong></p>
+
+<p>On CoNLL dataset BiLSTM model completed training without any difficulty, the BiLSTM-CNN model failed upto 10-15% of trials depending on the feature set. in OntoNotes it failed upto 1.5% trials. Using lower learning rate reduces the failure rate. Gradient Clipping and AdaDelta were effective in eliminating failures, however AdaDelta made training expensive. The threshold for CoNLL dataset was 95% and OntoNotes was 80% .</p>
+
+<p><strong>Training and Tagging Speed</strong></p>
+
+<p>on Intel Xeon E5-2697 processor training takes about  6 hours while tagging takes about 12 seconds for CoNLL dataset. For OntoNotes dataset it was 10 hours and 60 seconds respectively.</p>
+
+<p><strong>Results and Discussion</strong></p>
+
+<p>Given enough data the neural network automatically learns the relevant features for NER without feature engineering.</p>
+
+<p><strong>Comparison with FFNN</strong> by Collobert. Colloberts FFNN model was reinvented and compared with the BiLSTM model. FFNN was the baseline for comparison. FFNN was clearly inadequate for OntoNotes which proved that LSTM is required for a larger domain for NER.</p>
+
+<p><strong>Character Level CNN’s vs Character type and Capitalisation Features</strong></p>
+
+<ul>
+  <li>BiLSTM -CNN models outperforms BiLSTM model significantly when given same feature set.</li>
+  <li>The effect is not statistically significant on OntoNotes when capitalisation features are added.</li>
+  <li>Character level CNN can replace handcrafted character features in some cases. When trained word embeddings were used large significant improvements were noted instead of random embedding regardless of additional features.</li>
+  <li>300 dimensional embedding present no significant improvement over 50 dimensional embedding</li>
+  <li>gloVe embedding improved significantly over publicly available embeddings on CoNLL and word2vec skipgram embedding improved significantly over google’s embedding on OntoNotes.</li>
+</ul>
+
+<p><strong>Effect of DropOuts</strong></p>
+
+<p>Dropouts are essential for state of the art performance and improvement is statistically significant. DropOut is optimized on the devset, hence the chosen value may not be best performing.</p>
+
+<p><strong>Lexicon Feature</strong></p>
+
+<p>CoNLL using features from both SENNA lexicon and proposed DBpedia lexicon provides a significant improvement which is suspected to be because both the lexicons are complementary, SENNA lexicon is clean while DBpedia lexicon is noisy with higher coverage.</p>
+
+<p><strong>Analysis on Onto Notes Performance</strong></p>
+
+<p>Model performs best on clean text like broadcast news (BN) and newswire(NW) and worst on noisy text like telephone conversation and webtext. The model also substantially improve except for telephone conversation.</p>
+
+<p><strong>Related Research</strong></p>
+<ul>
+  <li>Recent approaches in NER has came from CRF, SVM and perceptron models performance is heavily dependent of feature engineering. k means clustering over a private database of search engine query logs  instead of phrase features helped to achieve 90.8% in CoNLL dataset. large scale unlabelled data was used to perform feature reduction this inturn acheived an F1 Score or 91.02%.</li>
+  <li>Training an NER system with entity linking has proved to be a success.</li>
+  <li>
+<strong>NER with Neural Networks</strong> -  many approaches involve CRF model. However now we have computational power available hence complex neural networks are now being investigated for Neural Networks. CharWNN network augments neural network of Collobert with characterlevel  CNN’s and reported improved performance on Spanish and Portugeese NER.</li>
+  <li>BiLSTM has been used for POS tagging, chunking and NER task with heavy feature engineering instead of using CNN to extract character level features</li>
+  <li>BiRNN with character level CNN’s to perform German POS tagging is successfull</li>
+  <li>Both word and character level BiLSTM has been used to create the current state of the art English POS tagging, Using BiLSTM instead of CNN allows for extraction of more sophisticated character level features but for NER it didnot perform significantly better than CNN and was computationaly expensive</li>
+</ul>
+
+<p><strong>Conclusion</strong></p>
+
+<p>Neural Network model with Bidirectional LSTM and character level CNN benefits from robust training  through dropout , achieved state of the art results in Named Entity Recognition with little feature engineering.</p>
+
+
+  </div><a class="u-url" href="/fastpages/markdown/2018/11/10/LiteratureReview-Named-Entity-Recognition-using-BIdirectional-LSTM.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/fastpages/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/fastpages/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/fastpages/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Blog to track progress in data science.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/fastai" title="fastai"><svg class="svg-icon grey"><use xlink:href="/fastpages/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/fastdotai" title="fastdotai"><svg class="svg-icon grey"><use xlink:href="/fastpages/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

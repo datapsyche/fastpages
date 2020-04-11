@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Facebook Prophet Library | False Positive</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Facebook Prophet Library" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Facebook Prophet Library" />
+<meta property="og:description" content="Facebook Prophet Library" />
+<link rel="canonical" href="https://datapsyche.github.io/fastpages/markdown/2018/11/16/Literature-Review-FB-Prophet.html" />
+<meta property="og:url" content="https://datapsyche.github.io/fastpages/markdown/2018/11/16/Literature-Review-FB-Prophet.html" />
+<meta property="og:site_name" content="False Positive" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-11-16T00:00:00-06:00" />
+<script type="application/ld+json">
+{"datePublished":"2018-11-16T00:00:00-06:00","headline":"Facebook Prophet Library","description":"Facebook Prophet Library","mainEntityOfPage":{"@type":"WebPage","@id":"https://datapsyche.github.io/fastpages/markdown/2018/11/16/Literature-Review-FB-Prophet.html"},"@type":"BlogPosting","url":"https://datapsyche.github.io/fastpages/markdown/2018/11/16/Literature-Review-FB-Prophet.html","dateModified":"2018-11-16T00:00:00-06:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/fastpages/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://datapsyche.github.io/fastpages/feed.xml" title="False Positive" /><link rel="shortcut icon" type="image/x-icon" href="/fastpages/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Facebook Prophet Library | False Positive</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Facebook Prophet Library" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Facebook Prophet Library" />
+<meta property="og:description" content="Facebook Prophet Library" />
+<link rel="canonical" href="https://datapsyche.github.io/fastpages/markdown/2018/11/16/Literature-Review-FB-Prophet.html" />
+<meta property="og:url" content="https://datapsyche.github.io/fastpages/markdown/2018/11/16/Literature-Review-FB-Prophet.html" />
+<meta property="og:site_name" content="False Positive" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-11-16T00:00:00-06:00" />
+<script type="application/ld+json">
+{"datePublished":"2018-11-16T00:00:00-06:00","headline":"Facebook Prophet Library","description":"Facebook Prophet Library","mainEntityOfPage":{"@type":"WebPage","@id":"https://datapsyche.github.io/fastpages/markdown/2018/11/16/Literature-Review-FB-Prophet.html"},"@type":"BlogPosting","url":"https://datapsyche.github.io/fastpages/markdown/2018/11/16/Literature-Review-FB-Prophet.html","dateModified":"2018-11-16T00:00:00-06:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+<link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css"><link type="application/atom+xml" rel="alternate" href="https://datapsyche.github.io/fastpages/feed.xml" title="False Positive" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head><body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/fastpages/">False Positive</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/fastpages/about/">About Me</a><a class="page-link" href="/fastpages/search/">Search</a><a class="page-link" href="/fastpages/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Facebook Prophet Library</h1><p class="page-description">Facebook Prophet Library</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2018-11-16T00:00:00-06:00" itemprop="datePublished">
+        Nov 16, 2018
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      4 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/fastpages/categories/#markdown">markdown</a>
+        
+      
+      </p>
+    
+
+    </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h1"><a href="#literature-review-of-facebook-prophet-library-for-time-series-analysis">Literature Review of Facebook Prophet Library for Time series Analysis</a></li>
+</ul><h1 id="literature-review-of-facebook-prophet-library-for-time-series-analysis">
+<a class="anchor" href="#literature-review-of-facebook-prophet-library-for-time-series-analysis" aria-hidden="true"><span class="octicon octicon-link"></span></a>Literature Review of Facebook Prophet Library for Time series Analysis</h1>
+
+<p>So for people like me who loves to watch an explanation before diving deep into a paper, i would suggest this simple but powerful intro to fbprophet library.  <a href="https://www.youtube.com/watch?v=95-HMzxsghY">Fortune-Telling with Python: An Intro to Facebook Prophet</a>.</p>
+
+<p>The next important article that i religiously went through was the release article mentioned in research fb blog. <a href="https://research.fb.com/prophet-forecasting-at-scale/">Prophet - Forecasting at Scale</a>.  Some very important parts are discussed at length in this blog about the functionalities of FB prophet.</p>
+
+<p>Prophet is an <strong>Additive regression model</strong>  with 4 main components.</p>
+
+<ul>
+  <li>
+    <p>A piece wise <strong>linear or logistic growth curve trend</strong>. Prophet automaticaly detect changes in trends by selecting change points from the data.</p>
+  </li>
+  <li>
+    <p>A <strong>yearly seasonal component</strong> modelled using <em>Fourier series</em>.</p>
+  </li>
+  <li>
+    <p>A <strong>weekly seasonal component</strong> using <em>dummy variables</em>.</p>
+  </li>
+  <li>
+    <p>A <em>user provided</em> list of <strong>important holiday</strong>.</p>
+  </li>
+</ul>
+
+<p>So after a little bit of research about introductory blogs and videos its time to look into the research paper of facebook-prophet it is available in this link <a href="https://peerj.com/preprints/3190.pdf">facebook-prophet</a>.</p>
+
+<p><strong>Introduction</strong> - talks about the importance of forecasting, time required for an analyst to become an expert forecaster, how fb prophet helps an analyst in his forecasting tasks. Fb-prophet intends to use the analyst in the loop approach where the model can be adjusted through various analyst friendly parameters.</p>
+
+<p><strong>Features of Business Time Series</strong> - Seasonal effects are visible in a time series, there might be a weekly cycle, yearly cycle, or a vacation based cycle. seasonal effects naturally arises and can be expected in a time series generated by human actions.</p>
+
+<p><strong>Prophet Forecasting Models</strong> - Forecasts are made at three points in the history using only portion of the time series up to that point. Forecasts  for each day are grouped and coloured by day of the week to visualize weekly seasonality. A Decomposible time series with 3 main model components are trend, seasonality and holidays. They are combined to an equation<code class="highlighter-rouge">y(t)=g(t)+s(t)+h(t)+e</code> where <code class="highlighter-rouge">g(t)</code> is the trend function, <code class="highlighter-rouge">s(t)</code> is the seasonality,  <code class="highlighter-rouge">h(t)</code> is the holiday . The formula looks very much similar to a Generalized Additive Model.</p>
+
+<p>Here we have time as regressor with nonlinear functions of time as components. The GAM formulation has the advantage that it is easy to decompose and easy to accommodate components easily. Time series problem is considered as a curve fitting exercise instead of identifying the temporal dependence structure of the time series data.</p>
+
+<p><strong>Trend Modelling</strong> - trend can be a saturating growth model and piece wise linear model.</p>
+
+<ul>
+  <li>Saturating growth model is typically modelled using a logistic growth model with a time varying factor ‘capacity’. we incorporate trend changes in growth model by explicitly defining changepoints where growth rate is allowed to change.</li>
+  <li>Similarly for linear piece wise model, a linear equation which changes withrespect to a time varying capacity and change points is formulated.</li>
+</ul>
+
+<p><strong>Changepoint Selection</strong> - changepoints could be specified by the analyst (as a parameter -list of change point dates). the list affects the trend and induces a change in trend.</p>
+
+<p><strong>Trend Forecast Uncertainty</strong> - when the model is extrapolated past the history to make a forecast, the trend will have a constant rate.  uncertainities are induced into the model by extending the Generalized additive model. the future will see same average frequency  and magnitude of rate changes.</p>
+
+<p><strong>Seasonality</strong> - Due to human behaviour business time series often have multi period seasonality. Fourier transform is used to capture the seasonality. the parameters required to fit a fourier transform is obtained by constructing a matrix of seasonality vector for each value of <code class="highlighter-rouge">t</code>.</p>
+
+<p><strong>Holiday and Events</strong> - They provide predicatable shocks in most real world time series analysis. this is kept as a parameter where any analyst could pass the list to create a model which looks into the seasonality factor.</p>
+
+<p><strong>Model Fitting</strong> -  so once seasonality, holiday features for each observation are combined into a matrix X and change point indicators <code class="highlighter-rouge">a(t)</code> in a matrix A, the entire model can be expressed in a few lines of <a href="http://mc-stan.org/">Stan Code</a>. The Stan actualy provides an easy interface to perform probablistic calculations like <em>penalized maximum likelihood function(L-BFGS), approximate Bayesian inference  with variational inference, etc</em>. Prophet uses decomposable model and allows us to look at each component of the forecast separately.</p>
+
+<p><strong>Analyst in Loop Modeling</strong> - Analyst can alter the model to apply there expertise and external knowledge  with limited statistical knowledge.</p>
+
+<ul>
+  <li>Capacity - analyst may have the  external data for market size  and can apply that knowledge directly by specifying capacities.</li>
+  <li>Changepoints - Analyst might know about certain shock days where abnormal values might come up. this can be directly specified.</li>
+  <li>Holidays and Seasonality - Holidays and seasonalities could be specifically mentioned.</li>
+  <li>Smoothing Parameters -  By adjusting the smoothing parameter an analyst can select from a range of more global or locally smooth models.</li>
+</ul>
+
+<p>The effort of the analyst could help in including judgemental and statistical forecasting and we can have a balance of both.</p>
+
+<p><strong>Automating the Evaluation of Forecast</strong></p>
+
+<ul>
+  <li>By use of baseline forecast - simplistic forecast is used to compare a set of baseline methods.</li>
+  <li>Modelling Forecast Accuracy - Forecast is made over a certain days like 90,180 days etc.</li>
+  <li>Let y(t)</li>
+</ul>
+
+
+  </div><a class="u-url" href="/fastpages/markdown/2018/11/16/Literature-Review-FB-Prophet.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/fastpages/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/fastpages/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/fastpages/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Blog to track progress in data science.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/fastai" title="fastai"><svg class="svg-icon grey"><use xlink:href="/fastpages/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/fastdotai" title="fastdotai"><svg class="svg-icon grey"><use xlink:href="/fastpages/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

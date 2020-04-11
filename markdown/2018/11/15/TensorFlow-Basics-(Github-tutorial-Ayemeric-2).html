@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Introduction to TensorFlow | False Positive</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Introduction to TensorFlow" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Introduction to TensorFlow" />
+<meta property="og:description" content="Introduction to TensorFlow" />
+<link rel="canonical" href="https://datapsyche.github.io/fastpages/markdown/2018/11/15/TensorFlow-Basics-(Github-tutorial-Ayemeric-2).html" />
+<meta property="og:url" content="https://datapsyche.github.io/fastpages/markdown/2018/11/15/TensorFlow-Basics-(Github-tutorial-Ayemeric-2).html" />
+<meta property="og:site_name" content="False Positive" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-11-15T00:00:00-06:00" />
+<script type="application/ld+json">
+{"datePublished":"2018-11-15T00:00:00-06:00","headline":"Introduction to TensorFlow","description":"Introduction to TensorFlow","mainEntityOfPage":{"@type":"WebPage","@id":"https://datapsyche.github.io/fastpages/markdown/2018/11/15/TensorFlow-Basics-(Github-tutorial-Ayemeric-2).html"},"@type":"BlogPosting","url":"https://datapsyche.github.io/fastpages/markdown/2018/11/15/TensorFlow-Basics-(Github-tutorial-Ayemeric-2).html","dateModified":"2018-11-15T00:00:00-06:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/fastpages/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://datapsyche.github.io/fastpages/feed.xml" title="False Positive" /><link rel="shortcut icon" type="image/x-icon" href="/fastpages/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Introduction to TensorFlow | False Positive</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Introduction to TensorFlow" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Introduction to TensorFlow" />
+<meta property="og:description" content="Introduction to TensorFlow" />
+<link rel="canonical" href="https://datapsyche.github.io/fastpages/markdown/2018/11/15/TensorFlow-Basics-(Github-tutorial-Ayemeric-2).html" />
+<meta property="og:url" content="https://datapsyche.github.io/fastpages/markdown/2018/11/15/TensorFlow-Basics-(Github-tutorial-Ayemeric-2).html" />
+<meta property="og:site_name" content="False Positive" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-11-15T00:00:00-06:00" />
+<script type="application/ld+json">
+{"datePublished":"2018-11-15T00:00:00-06:00","headline":"Introduction to TensorFlow","description":"Introduction to TensorFlow","mainEntityOfPage":{"@type":"WebPage","@id":"https://datapsyche.github.io/fastpages/markdown/2018/11/15/TensorFlow-Basics-(Github-tutorial-Ayemeric-2).html"},"@type":"BlogPosting","url":"https://datapsyche.github.io/fastpages/markdown/2018/11/15/TensorFlow-Basics-(Github-tutorial-Ayemeric-2).html","dateModified":"2018-11-15T00:00:00-06:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+<link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css"><link type="application/atom+xml" rel="alternate" href="https://datapsyche.github.io/fastpages/feed.xml" title="False Positive" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head><body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/fastpages/">False Positive</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/fastpages/about/">About Me</a><a class="page-link" href="/fastpages/search/">Search</a><a class="page-link" href="/fastpages/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Introduction to TensorFlow</h1><p class="page-description">Introduction to TensorFlow</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2018-11-15T00:00:00-06:00" itemprop="datePublished">
+        Nov 15, 2018
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      3 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/fastpages/categories/#markdown">markdown</a>
+        
+      
+      </p>
+    
+
+    </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h1"><a href="#tensorflow--1">Tensorflow -1</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#exercise---1-hello-world">Exercise - 1) Hello World!</a></li>
+<li class="toc-entry toc-h3"><a href="#exercise---2--basic-operations-with-constant">Exercise - 2)  Basic Operations with Constant</a></li>
+<li class="toc-entry toc-h3"><a href="#exercise---2--basic-operations-with-variables">Exercise - 2)  Basic Operations with Variables</a></li>
+<li class="toc-entry toc-h3"><a href="#exercise---3-matrix-multiplication">Exercise - 3) Matrix Multiplication</a></li>
+<li class="toc-entry toc-h3"><a href="#exercise---4-eager-execution">Exercise - 4) Eager Execution</a></li>
+</ul>
+</li>
+</ul><h1 id="tensorflow--1">
+<a class="anchor" href="#tensorflow--1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tensorflow -1</h1>
+
+<p>So Hi, Again I’m trying to start fresh with Tensor Flow Basics - but this time with more code. I’ll be almost copy pasting the code (best way to learn is to first copy, understand and then refactor, as per my way).</p>
+
+<h3 id="exercise---1-hello-world">
+<a class="anchor" href="#exercise---1-hello-world" aria-hidden="true"><span class="octicon octicon-link"></span></a>Exercise - 1) Hello World!</h3>
+
+<p>Simple straight forward Hello World in TensorFlow</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="n">tf</span>
+<span class="n">hello</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="s">"Hello World!"</span><span class="p">)</span>
+<span class="n">sess</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
+<span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">hello</span><span class="p">)</span>
+
+<span class="c1">##-&gt; Output - b'Hello World!'
+</span></code></pre></div></div>
+
+<h3 id="exercise---2--basic-operations-with-constant">
+<a class="anchor" href="#exercise---2--basic-operations-with-constant" aria-hidden="true"><span class="octicon octicon-link"></span></a>Exercise - 2)  Basic Operations with Constant</h3>
+
+<p>So important things</p>
+
+<ul>
+  <li>we are opening a tf.Session() as sess and the indentation is important it means the sess is not closed.</li>
+  <li>we use the python string formating to print sentences {} are just part of that. don’t get tensed it is simple. request you to look into W3 schools to learn more about string formating. i Just did now and it was a great learning. :)</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span> <span class="k">as</span> <span class="n">sess</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Constant a = {} </span><span class="se">\n</span><span class="s">Constant b = {}"</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">a</span><span class="p">),</span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">b</span><span class="p">)))</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Addition a + b = {}"</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)))</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Multiplication a*b = {}"</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">b</span><span class="p">)))</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Subtraction a-b = {}"</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">a</span><span class="o">-</span><span class="n">b</span><span class="p">)))</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Division a/b = {}"</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">a</span><span class="o">/</span><span class="n">b</span><span class="p">)))</span>
+    
+<span class="c1">##-&gt; Output
+#Constant a = 5 
+#Constant b = 4
+#Addition a + b = 9
+#Multiplication a*b = 20
+#Subtraction a-b = 1
+#Division a/b = 1.25
+</span></code></pre></div></div>
+
+<h3 id="exercise---2--basic-operations-with-variables">
+<a class="anchor" href="#exercise---2--basic-operations-with-variables" aria-hidden="true"><span class="octicon octicon-link"></span></a>Exercise - 2)  Basic Operations with Variables</h3>
+
+<p>lets do the above exercise with variables now.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">int16</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">int16</span><span class="p">)</span>
+
+<span class="n">add</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
+<span class="n">mul</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">b</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span> <span class="k">as</span> <span class="n">sess</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Addition of Variables - {}"</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">add</span><span class="p">,</span><span class="n">feed_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">a</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="n">b</span><span class="p">:</span><span class="mi">5</span><span class="p">})))</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Multiplication of Variables - {}"</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">mul</span><span class="p">,</span><span class="n">feed_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">a</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="n">b</span><span class="p">:</span><span class="mi">5</span><span class="p">})))</span>
+
+<span class="c1">##-&gt; Output
+#Addition of Variables : 15
+#Multiplication of Variables : 50
+</span></code></pre></div></div>
+
+<h3 id="exercise---3-matrix-multiplication">
+<a class="anchor" href="#exercise---3-matrix-multiplication" aria-hidden="true"><span class="octicon octicon-link"></span></a>Exercise - 3) Matrix Multiplication</h3>
+
+<p>This is a straight forward example of matrix multiplication. please make sure the shape of the matrix is correct else chances of running into some shape error.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mat1</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">]])</span>
+<span class="n">mat2</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">([[</span><span class="mi">2</span><span class="p">],[</span><span class="mi">2</span><span class="p">]])</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">mat1</span><span class="p">,</span><span class="n">mat2</span><span class="p">)</span>
+<span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span> <span class="k">as</span> <span class="n">sess</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Matrix Multiplication of ([3,3]) and ([2],[2]) = {}"</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">result</span><span class="p">))</span>
+
+<span class="c1">#-&gt; Output
+# Matrix Multiplication of ([3,3]) and ([2],[2]) = [[12]]
+</span></code></pre></div></div>
+
+<h3 id="exercise---4-eager-execution">
+<a class="anchor" href="#exercise---4-eager-execution" aria-hidden="true"><span class="octicon octicon-link"></span></a>Exercise - 4) Eager Execution</h3>
+
+<p>This is a relatively new paradigm in tensorflow programming. in eager execution mode we can do away with graph or interestingly we don’t have to start a session to do tensorflow computations. This idea is actually  borrowed from the main competitor of tensorflow - pytorch. lets code it.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="n">tf</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Setting Eager Mode"</span><span class="p">)</span>
+<span class="n">tf</span><span class="o">.</span><span class="n">enable_eager_execution</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">executing_eagerly</span><span class="p">())</span>
+
+<span class="c1">#-&gt;Output
+# Setting Eager Mode
+# True
+</span></code></pre></div></div>
+
+<p>My Observations</p>
+
+<ul>
+  <li>Eager Execution should be enabled at the start of the program, If you are in the middle of a Jupyter notebook i request you to open a new notebook for this exercise, else it will throw an error message. I hope the next version of tensorflow (tensorflow 2.0) would fix this issue and eager execution will be the default setting.</li>
+</ul>
+
+<p>Lets get back to code.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Tensor Constant a : {}"</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Tensor Constant b : {}"</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Tensor Constant a+b : {}"</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">))</span>
+
+<span class="c1">#-&gt; Output
+# Tensor Constant a : 5
+# Tensor Constant b : 10
+# Additon of Tensor constant a+b : 15
+</span></code></pre></div></div>
+
+<p>Observations</p>
+
+<ul>
+  <li>We now have sessions.</li>
+  <li>The Code now looks more pythonic</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">]],</span><span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">]],</span><span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Addition : {}"</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Subtraction : {}"</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">a</span><span class="o">-</span><span class="n">b</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Multiplication : {}"</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">b</span><span class="p">))</span>
+
+<span class="c1">#-&gt;Output
+#Tensor Additon - [[3. 5.]
+# [5. 6.]]
+#Tensor Subtraction- [[ 1.  1.]
+# [-1.  2.]]
+#Tensor Multiplication- [[2. 6.]
+# [6. 8.]]
+</span></code></pre></div></div>
+
+
+  </div><a class="u-url" href="/fastpages/markdown/2018/11/15/TensorFlow-Basics-(Github-tutorial-Ayemeric-2).html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/fastpages/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/fastpages/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/fastpages/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Blog to track progress in data science.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/fastai" title="fastai"><svg class="svg-icon grey"><use xlink:href="/fastpages/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/fastdotai" title="fastdotai"><svg class="svg-icon grey"><use xlink:href="/fastpages/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

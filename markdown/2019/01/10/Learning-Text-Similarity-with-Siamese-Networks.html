@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Learning Text Similarity with Siamese Recurrent Networks | False Positive</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Learning Text Similarity with Siamese Recurrent Networks" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Learning Text Similarity with Siamese Recurrent Networks." />
+<meta property="og:description" content="Learning Text Similarity with Siamese Recurrent Networks." />
+<link rel="canonical" href="https://datapsyche.github.io/fastpages/markdown/2019/01/10/Learning-Text-Similarity-with-Siamese-Networks.html" />
+<meta property="og:url" content="https://datapsyche.github.io/fastpages/markdown/2019/01/10/Learning-Text-Similarity-with-Siamese-Networks.html" />
+<meta property="og:site_name" content="False Positive" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-01-10T00:00:00-06:00" />
+<script type="application/ld+json">
+{"datePublished":"2019-01-10T00:00:00-06:00","headline":"Learning Text Similarity with Siamese Recurrent Networks","description":"Learning Text Similarity with Siamese Recurrent Networks.","mainEntityOfPage":{"@type":"WebPage","@id":"https://datapsyche.github.io/fastpages/markdown/2019/01/10/Learning-Text-Similarity-with-Siamese-Networks.html"},"@type":"BlogPosting","url":"https://datapsyche.github.io/fastpages/markdown/2019/01/10/Learning-Text-Similarity-with-Siamese-Networks.html","dateModified":"2019-01-10T00:00:00-06:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/fastpages/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://datapsyche.github.io/fastpages/feed.xml" title="False Positive" /><link rel="shortcut icon" type="image/x-icon" href="/fastpages/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Learning Text Similarity with Siamese Recurrent Networks | False Positive</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Learning Text Similarity with Siamese Recurrent Networks" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Learning Text Similarity with Siamese Recurrent Networks." />
+<meta property="og:description" content="Learning Text Similarity with Siamese Recurrent Networks." />
+<link rel="canonical" href="https://datapsyche.github.io/fastpages/markdown/2019/01/10/Learning-Text-Similarity-with-Siamese-Networks.html" />
+<meta property="og:url" content="https://datapsyche.github.io/fastpages/markdown/2019/01/10/Learning-Text-Similarity-with-Siamese-Networks.html" />
+<meta property="og:site_name" content="False Positive" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-01-10T00:00:00-06:00" />
+<script type="application/ld+json">
+{"datePublished":"2019-01-10T00:00:00-06:00","headline":"Learning Text Similarity with Siamese Recurrent Networks","description":"Learning Text Similarity with Siamese Recurrent Networks.","mainEntityOfPage":{"@type":"WebPage","@id":"https://datapsyche.github.io/fastpages/markdown/2019/01/10/Learning-Text-Similarity-with-Siamese-Networks.html"},"@type":"BlogPosting","url":"https://datapsyche.github.io/fastpages/markdown/2019/01/10/Learning-Text-Similarity-with-Siamese-Networks.html","dateModified":"2019-01-10T00:00:00-06:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+<link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css"><link type="application/atom+xml" rel="alternate" href="https://datapsyche.github.io/fastpages/feed.xml" title="False Positive" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head><body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/fastpages/">False Positive</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/fastpages/about/">About Me</a><a class="page-link" href="/fastpages/search/">Search</a><a class="page-link" href="/fastpages/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Learning Text Similarity with Siamese Recurrent Networks</h1><p class="page-description">Learning Text Similarity with Siamese Recurrent Networks.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2019-01-10T00:00:00-06:00" itemprop="datePublished">
+        Jan 10, 2019
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      8 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/fastpages/categories/#markdown">markdown</a>
+        
+      
+      </p>
+    
+
+    </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h1"><a href="#learning-text-similarity-with-siamese-recurrent-networks">Learning Text Similarity with Siamese Recurrent Networks</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#abstract">Abstract</a></li>
+<li class="toc-entry toc-h4"><a href="#introduction">Introduction</a></li>
+<li class="toc-entry toc-h4"><a href="#related-work">Related Work</a></li>
+<li class="toc-entry toc-h4"><a href="#siamese-recurrent-neural-network">Siamese Recurrent Neural Network</a></li>
+<li class="toc-entry toc-h4"><a href="#contrastive-loss-function">Contrastive Loss Function</a></li>
+<li class="toc-entry toc-h4"><a href="#experiment">Experiment</a></li>
+<li class="toc-entry toc-h4"><a href="#data-and-data-augmentation">Data and Data Augmentation</a></li>
+<li class="toc-entry toc-h4"><a href="#result">Result</a></li>
+<li class="toc-entry toc-h4"><a href="#discussions">Discussions</a></li>
+<li class="toc-entry toc-h4"><a href="#further-improvements">Further Improvements</a></li>
+</ul>
+</li>
+</ul><h1 id="learning-text-similarity-with-siamese-recurrent-networks">
+<a class="anchor" href="#learning-text-similarity-with-siamese-recurrent-networks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Learning Text Similarity with Siamese Recurrent Networks</h1>
+
+<p>Authors - Paul Neculoiu, Maarten Versteegh and Mihai Rotaru.</p>
+
+<p>Link to the Paper  - http://www.aclweb.org/anthology/W16-16#page=162</p>
+
+<h4 id="abstract">
+<a class="anchor" href="#abstract" aria-hidden="true"><span class="octicon octicon-link"></span></a>Abstract</h4>
+
+<ul>
+  <li>Presents a deep architecture for learning similarity metric on variable length character sequences.</li>
+  <li>Model combines a stack of character-level bidirectional LSTM’s with a Siamese architecture.</li>
+  <li>Learns to project variable length strings into a fixed dimensional embedding space by using only information about similarity between pairs of strings.</li>
+  <li>Model could be applied to task of job title normalization based on a manually annotated taxonomy. model learns a representation that is selective to differences in the input reflect semantic differences (eg:- Java developer vs HR manager) but also invariant to non semantic string differences (eg- Java developer vs Java programmer)</li>
+</ul>
+
+<h4 id="introduction">
+<a class="anchor" href="#introduction" aria-hidden="true"><span class="octicon octicon-link"></span></a>Introduction</h4>
+
+<ul>
+  <li>Representation that express semantic similarity and dissimilarity between textual elements is important in NLP.
+    <ul>
+      <li>Word similarity models (Mikolov 2013) is applied in diverse settings such as sentiment analysis and recommender system.</li>
+      <li>Semantic textual similarity is used in automatic summarization (Ponzanelli 2015), debate analysis (Boltuzic and Snajder 2015) and paraphrase detection (Socher 2011).</li>
+    </ul>
+  </li>
+  <li>Measuring semantic similarity between texts is necessary for Information Extraction (IE). This process is also called Normalization ie. to put pieces of information in standard format. eg:- ‘12pm, noon, 12:00h’ all should map to same representation. Normalization is essential for retrieving actionable information from free unstructured text.</li>
+  <li>This paper presents a system for job title normalization. task here is to receive an input string and map it to one of a finite set of job codes which were predefined externally. It could be considered as a highly Multi-class classification problem, but here the focus is on learning representation of the strings such that synonymous job titles are close together.</li>
+</ul>
+
+<h4 id="related-work">
+<a class="anchor" href="#related-work" aria-hidden="true"><span class="octicon octicon-link"></span></a>Related Work</h4>
+
+<ul>
+  <li>Representation learning through neural network (Auto encoders, Hinton 2006)  is invariant to differences in the input that do not matter for that task and selective to differences.</li>
+  <li>Siamese network (Bromley 1993) is an architecture for non linear metric learning with similarity information. The network naturally learns representations that reveals the invariance and selectivity through explicit information about similarity between pairs of object. Siamese network learns an invariant and selective representation directly through the use of similarity and dissimilarity information.</li>
+  <li>An Autoencoder learns invariance through added noise and dimensionality reduction in the bottleneck layer and selectivity through the condition that the input should be reproduced by the decoding part of the network.</li>
+  <li>Siamese architecture was originally applied to signature verification (Bromley 1993) and has been used in Vision application. Siamese convolutional networks are used for face verification (Chopra 2005) and dimensionality reduction on image features (Hadsell 2006). They have been also used for diverse tasks as unsupervised acoustic modelling (Synnaeve 2014), Learning food preference (Yang 2015), Scene detection (Baraldi, 2015). In NLP Siamese network with convolutional layers have been applied to matching sentences (Hu 2014) and for learning semantic entailment (Mueller 2016).</li>
+  <li>Job Title Normalization is framed as a classification task (Javed 2014)  as it has large number of classes. Multi stage classifier have shown good results. But there are disadvantages to this approach
+    <ul>
+      <li>Expense of data acquisition for training number of classes will exponentially increase the data requirement.</li>
+      <li>Once a classification error is identified, we need to retrain the entire classifier with new sample added to correct the class</li>
+      <li>Using traditional classifier do not allow for transfer learning.</li>
+    </ul>
+  </li>
+  <li>Use of String similarity measure to classify input strings here the advantage is there is no need to train the system hence improvement can be made by adding job title strings to the data.</li>
+  <li>Modeling similarity directly based on pairs of inputs Siamese networks lend themselves well to the semantic invariance present in job title normalization.</li>
+</ul>
+
+<h4 id="siamese-recurrent-neural-network">
+<a class="anchor" href="#siamese-recurrent-neural-network" aria-hidden="true"><span class="octicon octicon-link"></span></a>Siamese Recurrent Neural Network</h4>
+
+<ul>
+  <li>
+    <p>Recurrent Neural Networks are neural networks adapted for sequence data. LSTM variant of RNN has particularly had success in tasks related to natural language processing like text classification and language translation.</p>
+  </li>
+  <li>Bi directional RNN incorporate both future and past context by running the reverse f input through a separate RNN. The output of combined model at each time step is simply the concatenation of outputs from the forward and backward networks.</li>
+  <li>Siamese networks are dual branch networks with tied weights, they consist of the same network copied and merged with an energy function. The training set for Siamese network consists of triplets (x1,x2 and y) where x1 and x2 are character sequences and y indicates whether x1 and x2 are similar or dissimilar (0 or 1). The aim of training is to minimize the distance in an embedding space between similar pairs and maximize the distance between dissimilar pairs.</li>
+</ul>
+
+<h4 id="contrastive-loss-function">
+<a class="anchor" href="#contrastive-loss-function" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contrastive Loss Function</h4>
+
+<ul>
+  <li>The Network contains 4 layers of Bidirectional LSTM nodes. the activations at each time step of the final BLSTM are averaged to produce a fixed dimensional output. This output is projected through a single densely connected feed forward layer.  Energy of the model E is the cosine similarity between embeddings of x1 and x2.</li>
+  <li>The Network used has 4 BLSTM layers with 64 dimensional Hidden vectors h and memory c. there are connections at each time step between layers. Outputs of the last layer are averaged over time and this 128 dimensional vector is used as input to a dense feed forward layer.</li>
+  <li>The input strings are padded to produce a sequence of 100 characters with input string randomly placed in this sequence. The parameters of the model are optimized using Adam method and trained until convergence. Dropout technique (Srivastava 2014) on recurrent units and between layers (probability .4) is done to prevent overfitting.</li>
+</ul>
+
+<h4 id="experiment">
+<a class="anchor" href="#experiment" aria-hidden="true"><span class="octicon octicon-link"></span></a>Experiment</h4>
+
+<ul>
+  <li>Small dataset based on handmade taxonomy of job titles is used. After each experiment the dataset is augmented by adding new source of variance.</li>
+  <li>
+<strong>Baseline</strong> - ngram matcher (Daelemans 2004). given an input string, this matcher looks up closest neighbour from base taxonomy by maximizing a similarity scoring function. The matcher subsequently labels input string with neighbour’s group label.  This similarity function has the properties that it is easy to compute and doesn’t require any learning and is particularly insensitive to appending extra words in the input string.</li>
+  <li>Here the test set consists of pairs of strings, the first of which is the input string and the second a target group label from the base taxonomy. The network model projects the input string into the embedding space and searched for its nearest neighbor under cosine distance from the base taxonomy. The test records a hit only if the neighbors group label matches the target.</li>
+</ul>
+
+<h4 id="data-and-data-augmentation">
+<a class="anchor" href="#data-and-data-augmentation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Data and Data Augmentation</h4>
+
+<ul>
+  <li>
+    <p>Handmade Job Title taxonomy partition set of 19,927 job titles into 4,431 groups. Job Titles were manually and semi automatically collected from resumes and vacancy postings. Each was manually assigned a group such that job titles in a group are close together.</p>
+  </li>
+  <li>
+    <p>The wide variety of different semantic relations between and within groups is considered as an asset to be exploited by the model.</p>
+  </li>
+  <li>
+    <p>The groups are not equal in size largest group has 130 job titles and smallest group has just one. The long tail may affect the models ability to accurately learn to represent smallest group.</p>
+  </li>
+  <li>
+    <p>4 stage process starting from base taxonomy of job titles at each stage an augmentation of data which focuses on a particular property and a test that probes the model for behavior related to that property. each stage build on next stage hence previous augmentations are included.</p>
+  </li>
+  <li>
+    <p>The dataset consists of pairs of strings sampled from the taxonomy in a 4:1 ratio of between class (negative pairs) to within-class (positive pairs)</p>
+
+    <p><strong>Testing Criteria</strong></p>
+  </li>
+  <li>
+    <p><em>Typo and Spelling invariance</em> - Slight differences in spelling from taxonomy should be intelligently picked. to induce this invariance we augment the base taxonomy by extending it with positive sample pairs consisting of job title strings and the same string but with 20% characters randomly substituted and 5% deleted.</p>
+  </li>
+  <li>
+    <p><em>Synonyms</em> - Model should be invariant to synonym substitution we augment the data set by substituting words in job titles by synonyms. first source is a manually constructed job title synonym set consisting of around 1100 job titles each with between 1 and 10 synonyms. Second source is by induction the complements of the matching strings from a synonym candidate.</p>
+  </li>
+  <li>
+    <p><em>Extra Words</em>  - To be useful  model should be invariant to the present of additional words.</p>
+  </li>
+  <li>
+    <p><em>Feedback</em> - Model should be corrigible. we should be able to append the model when it performs badly.</p>
+  </li>
+</ul>
+
+<h4 id="result">
+<a class="anchor" href="#result" aria-hidden="true"><span class="octicon octicon-link"></span></a>Result</h4>
+
+<p>Comparison was done with baseline n-gram system and proposed neural network models on the four tests. Both n-gram matching system and the proposed model have near complete invariance to the simple typos.</p>
+
+<h4 id="discussions">
+<a class="anchor" href="#discussions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Discussions</h4>
+
+<ul>
+  <li>A model architecture for learning text similarity based on Siamese recurrent neural networks is presented. This architecture learns a series of embedding spaces based on specific augmentation of the dataset used to train the model. The embedding spaces captured important invariances of the input, the model was invariant to spelling variations, synonym replacements and superfluous words.</li>
+  <li>The ability of the system to learn invariances are due the contrastive loss function combined with the stack of recurrent layers. Using separate loss functions for similar and dissimilar samples helps the model maintain selectivity while learning invariances over different sources of variability.</li>
+</ul>
+
+<h4 id="further-improvements">
+<a class="anchor" href="#further-improvements" aria-hidden="true"><span class="octicon octicon-link"></span></a>Further Improvements</h4>
+
+<ul>
+  <li>Incorporating convolutional layers in addition to the recurrent layers.</li>
+  <li>Investigating a triplet loss function instead of contrastive loss used in this study</li>
+  <li>Comparison to a stronger baseline would serve further development.</li>
+  <li>Job Title taxonomy used in the current study exhibits a hierarchical structure that is not fully exploited. further research could attempt to learn a single embedding which would preserve the separation between groups at different levels of hierarchy.</li>
+</ul>
+
+
+  </div><a class="u-url" href="/fastpages/markdown/2019/01/10/Learning-Text-Similarity-with-Siamese-Networks.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/fastpages/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/fastpages/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/fastpages/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Blog to track progress in data science.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/fastai" title="fastai"><svg class="svg-icon grey"><use xlink:href="/fastpages/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/fastdotai" title="fastdotai"><svg class="svg-icon grey"><use xlink:href="/fastpages/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

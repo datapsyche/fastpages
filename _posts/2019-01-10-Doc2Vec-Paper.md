@@ -1,6 +1,12 @@
+---
+toc: true
+layout: post
+description: Doc2Vec Summary.
+categories: [markdown]
+title: Doc2Vec Summary
+---
+
 ### Distributed Representations of Sentences and Documents
-
-
 
 Most algorithms typically require text input to be represented as a fixed-length vector. Bag of words / bag of n grams are the most common due to its simplicity, efficiency and often surprising accuracy. Bag of words has many disadvantages, Word order is gone and hence different sentences can have same representation. Bag of n grams considers word order in short context, as it has data sparsity and high dimensionality.
 

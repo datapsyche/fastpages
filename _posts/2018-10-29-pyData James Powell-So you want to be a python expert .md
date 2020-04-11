@@ -1,3 +1,11 @@
+---
+toc: true
+layout: post
+description: pydata james powell
+categories: [markdown]
+title: pydata james powell
+---
+
 This is a summary of the talk of James Powell for PyData Seattle conference (24-Jun-2017). Here is the youtube video of the event,  https://www.youtube.com/watch?v=cKPlPJyQrt4&amp;t=2146s
 
 

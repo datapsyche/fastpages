@@ -1,3 +1,11 @@
+---
+toc: true
+layout: post
+description: NER using Neural Networks
+categories: [markdown]
+title: NER using Neural Networks
+---
+
 ### Literature Review of Named Entity Recognition using Neural Networks 
 
 This is a short literature review of the detailed study conducted by Fabian Karl on the topic of Named Entity Recognition, the complete paper is available in this link :  [Independent Study by Fabian Karl (University of Hamburger)](https://www.inf.uni-hamburg.de/en/inst/ab/lt/teaching/independent-studies/201711-karl-ner-independent.pdf).

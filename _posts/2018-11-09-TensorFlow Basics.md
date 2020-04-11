@@ -1,3 +1,11 @@
+---
+toc: true
+layout: post
+description: Tensorflow Basics
+categories: [markdown]
+title: Tensorflow Basics
+---
+
 So this is my attempt to learn the very basics of tensorflow. I'm currently following a book **Fundatmentals of Deep Learning** by *Nikhil Buduma*. It is available in the public domain and provides an excellent intuition of neural networks in TensorFlow. I've been trying to master TensorFlow for previous couple of weeks and i decided to start with a book rather than learning online. 
 
 Thankfully I'm an expert in installing tensorflow in Anaconda i've done it multiple times.  lets start with the next basic step. 

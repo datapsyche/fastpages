@@ -1,3 +1,11 @@
+---
+toc: true
+layout: post
+description: TensorFlow Basics
+categories: [markdown]
+title: TensorFlow Basics
+---
+
 So this is the last chapter of  walk through of the concepts that i have tried to learn in past 5 days about tensorflow. There are 4 highlevel API's that were introduced in the latest version of TensorFlow (1.9 as on 10-31-2018). lets discuss about third of those 4 high level API's, we have already coverd tf.keras, EagerExecution and Importing Data previously. lets look into Estimators perhaps the most important one.!
 
 ### Estimators

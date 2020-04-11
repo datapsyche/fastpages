@@ -1,4 +1,12 @@
-## pImplementing RNN / LSTM in Tensorflow
+---
+toc: true
+layout: post
+description: Implementing RNN / LSTM in Tensorflow
+categories: [markdown]
+title: Implementing RNN / LSTM in Tensorflow
+---
+
+## Implementing RNN / LSTM in Tensorflow
 
 So i started learning about LSTM and RNN through Christopher Olah's blog about the same. Please find it here - http://colah.github.io/posts/2015-08-Understanding-LSTMs . It gives a great intuitive understanding about the topic that I'm trying to implement.
 

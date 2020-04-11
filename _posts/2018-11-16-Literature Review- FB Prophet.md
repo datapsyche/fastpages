@@ -1,3 +1,11 @@
+---
+toc: true
+layout: post
+description: Facebook Prophet Library
+categories: [markdown]
+title: Facebook Prophet Library
+---
+
 ### Literature Review of Facebook Prophet Library for Time series Analysis
 
 So for people like me who loves to watch an explanation before diving deep into a paper, i would suggest this simple but powerful intro to fbprophet library.  [Fortune-Telling with Python: An Intro to Facebook Prophet](https://www.youtube.com/watch?v=95-HMzxsghY).

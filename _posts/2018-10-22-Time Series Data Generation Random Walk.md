@@ -1,7 +1,9 @@
 ---
+toc: true
 layout: post
-title: Time Series Generation -An exploratory Study
-categories: DataGeneration, RandomWalk, TimeSeries
+description: TimeSeries - Random Walk
+categories: [markdown]
+title: TimeSeries - Random Walk
 ---
 ​	So a simple google search on above topic gave quite a lot of results, along with some research papers and links to custom libraries. I was trying to understand the varies methodologies that currently exist to generate dummy data based on a say a very small number of samples. This could be very mush relatable for quite a lot of data scientist.  It is a very common occurance that your stake holder might just say "This is all the data i have, now show us what you could come with this". Well my study here is to come up with an effective solution for all the data scientist who are challenged by their stake holders.
 

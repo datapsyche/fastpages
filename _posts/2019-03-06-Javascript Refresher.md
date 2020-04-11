@@ -1,3 +1,11 @@
+---
+toc: true
+layout: post
+description: Introduction to Javascript.
+categories: [markdown]
+title: Introduction to Eloquent Javascript
+---
+
 ## Eloquent Javascript
 
 #### Chapter-1

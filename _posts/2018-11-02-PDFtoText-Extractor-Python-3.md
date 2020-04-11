@@ -1,3 +1,11 @@
+---
+toc: true
+layout: post
+description: Loading PDF Data to Python
+categories: [markdown]
+title: Loading PDF Data to Python
+---
+
 So getting back to something very much in use from a business angle. Often we are left with a whole directory of PDF files and as Data scientist our job might be to extract usefull information from this pile of documents. Our first aim would be to find a good library or code snippet that would help us to extract pdf into python.  Below is the list that i compiled after a quick couple of hours of search in internet. 
 
 * pyPDF2 module

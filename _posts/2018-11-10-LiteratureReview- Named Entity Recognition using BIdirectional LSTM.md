@@ -1,4 +1,11 @@
- 
+---
+toc: true
+layout: post
+description: NER with Bidirectional LSTM and CNN
+categories: [markdown]
+title: NER with Bidirectional LSTM and CNN
+---
+
 
 ###  Named Entity Recognition with Bidirectional LSTM-CNNs by Jason P.C. Chiu and Eric Nichols.
 

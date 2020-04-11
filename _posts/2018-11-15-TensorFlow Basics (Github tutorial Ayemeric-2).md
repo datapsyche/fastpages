@@ -1,3 +1,12 @@
+---
+toc: true
+layout: post
+description: Introduction to TensorFlow
+categories: [markdown]
+title: Introduction to TensorFlow
+---
+
+
 So Hi, Again I'm trying to start fresh with Tensor Flow Basics - but this time with more code. I'll be almost copy pasting the code (best way to learn is to first copy, understand and then refactor, as per my way). 
 
 ### Exercise - 1) Hello World!

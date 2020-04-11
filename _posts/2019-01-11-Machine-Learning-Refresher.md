@@ -1,3 +1,11 @@
+---
+toc: true
+layout: post
+description: Data Mining Map by Saed Sayad.
+categories: [markdown]
+title: Data Mining Map by Saed Sayad
+---
+
 ## Data Mining Map by Saeed Sayad
 
 **Data Science** can be broadly divided into two approaches *explaining the past*  or *predicting the future* by means of data analysis. Data Science is a multi disciplinary field that combines statistics, machine learning, artificial intelligence and database technology.

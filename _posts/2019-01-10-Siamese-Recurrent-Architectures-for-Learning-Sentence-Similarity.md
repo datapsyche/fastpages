@@ -5,8 +5,7 @@ description: Introduction to Siamese Networks.
 categories: [markdown]
 title: Introduction to Siamese Networks
 ---
-
-## Siamese Recurrent Architectures for Learning Sentence Similarity
+# Siamese Recurrent Architectures for Learning Sentence Similarity
 
 Paper by Jonas Mueller & Aditya Thyagarajan  - http://www.mit.edu/~jonasm/info/MuellerThyagarajan_AAAI16.pdf
 

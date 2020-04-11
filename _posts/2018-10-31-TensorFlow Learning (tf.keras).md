@@ -5,8 +5,9 @@ description: TensorFlow-2
 categories: [markdown]
 title: TensorFlow-2
 ---
+# Tensorflow -7
 
- So this is a walk through of all the concepts that i have tried to learn in past 2 days about tensorflow. There are 4 highlevel API's that were introduced in the latest version of TensorFlow (1.9 as on 10-31-2018). lets discuss about each of those 4 high level API's.
+So this is a walk through of all the concepts that i have tried to learn in past 2 days about tensorflow. There are 4 highlevel API's that were introduced in the latest version of TensorFlow (1.9 as on 10-31-2018). lets discuss about each of those 4 high level API's.
 
 ### Keras 
 

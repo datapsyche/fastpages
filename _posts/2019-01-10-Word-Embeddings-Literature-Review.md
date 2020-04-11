@@ -5,8 +5,7 @@ description: Word Embedding Literature Review.
 categories: [markdown]
 title: Word Embedding Literature Review
 ---
-
-## Word Embeddings - Literature Review
+# Word Embeddings - Literature Review
 
 - Word embeddings are representations of a document library capable of capturing context of a word in a document, semantic and syntactic similarity, relation with other words.
 - Vector representation of a particular word.

@@ -5,6 +5,8 @@ description: TensorFlow-3
 categories: [markdown]
 title: TensorFlow-3
 ---
+# Tensorflow -6
+
 So this is a walk through of all the concepts that i have tried to learn in past 3 days about tensorflow. There are 4 highlevel API's that were introduced in the latest version of TensorFlow (1.9 as on 10-31-2018). lets discuss about third of those 4 high level API's, we have already coverd tf.keras, EagerExecution previously. lets look into Importing Data.
 
 ### Importing Data

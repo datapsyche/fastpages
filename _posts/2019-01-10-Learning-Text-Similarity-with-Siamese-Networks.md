@@ -5,8 +5,7 @@ description: Learning Text Similarity with Siamese Recurrent Networks.
 categories: [markdown]
 title: Learning Text Similarity with Siamese Recurrent Networks
 ---
-
-## Learning Text Similarity with Siamese Recurrent Networks
+# Learning Text Similarity with Siamese Recurrent Networks
 
 Authors - Paul Neculoiu, Maarten Versteegh and Mihai Rotaru. 
 

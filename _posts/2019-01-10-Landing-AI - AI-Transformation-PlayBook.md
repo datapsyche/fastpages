@@ -5,8 +5,7 @@ description: Landing AI - AI transformation Playbook.
 categories: [markdown]
 title: Landing AI - AI transformation Playbook
 ---
-
-## Landing AI -AI transformation PlayBook - Quick Study
+# Landing AI -AI transformation PlayBook - Quick Study
 
 * Recommendations are primarily meant for larger enterprises with a market cap from $500M to $500B. 
 * First few AI projects needs to be successful rather than being most valuable.
